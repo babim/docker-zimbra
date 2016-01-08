@@ -181,7 +181,7 @@ cd /tmp/zcs
 #wget https://files.zimbra.com/downloads/8.6.0_GA/zcs-8.6.0_GA_1153.UBUNTU14_64.20141215151116.tgz
 ##install from /install
 cp /install/zcs*.tgz /tmp/zcs
-tar xzvf zcs-*
+tar xzvf zcs-*.tgz
 rm -f zcs*.tgz
 echo "Installing Zimbra Collaboration just the Software"
 cd /tmp/zcs/zcs-* && ./install.sh -s < /tmp/zcs/installZimbra-keystrokes
