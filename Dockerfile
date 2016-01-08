@@ -21,5 +21,3 @@ ADD start.sh /etc/my_init.d/startup.sh
 RUN chmod +x /etc/my_init.d/startup.sh
 ADD install.sh /install.sh
 RUN chmod +x /install.sh
-
-CMD ["/sbin/my_init"]
