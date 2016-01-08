@@ -1,4 +1,4 @@
-FROM babim/ubuntubaseinit
+FROM babim/ubuntubaseinit:ssh
 
 ## Install wget ##
 RUN sudo apt-get update && sudo apt-get install -y wget bind9 bind9utils bind9-doc dnsutils \
