@@ -1,5 +1,5 @@
 #!/bin/bash
-service ssh start
+if [ -f "/opt/zimbra/bin/zmcontrol" ]; then
 rm -f /opt/zimbra/zmstat/pid/zmstat-*.pid
 su -c "/opt/zimbra/bin/zmloggerctl restart" zimbra
 /opt/zimbra/libexec/zmsyslogsetup
@@ -13,3 +13,6 @@ su -c "/opt/zimbra/bin/zmcontrol restart" zimbra
 su -c "/opt/zimbra/bin/zmcontrol start" zimbra
 su -c "/opt/zimbra/bin/zmcontrol status" zimbra
 bash
+else
+/install.sh
+fi
