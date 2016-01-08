@@ -14,7 +14,7 @@ RUN apt-get clean && \
 
 VOLUME ["/opt/zimbra", "/install"]
 
-EXPOSE 22 25 456 587 110 143 993 995 80 443 8080 8443 7071
+EXPOSE 25 456 587 110 143 993 995 80 443 8080 8443 7071
 
 RUN mkdir /tmp/zcs
 ADD start.sh /etc/my_init.d/startup.sh
