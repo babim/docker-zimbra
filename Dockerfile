@@ -17,7 +17,7 @@ VOLUME ["/opt/zimbra", "/install"]
 EXPOSE 22 25 456 587 110 143 993 995 80 443 8080 8443 7071
 
 RUN mkdir /tmp/zcs
-ADD start.sh /start.sh
+ADD start.sh /etc/my_init.d/startup.sh
 ADD install.sh /install.sh
 
-CMD ["/bin/bash", "/start.sh"]
+CMD ["/etc/my_init.d/startup.sh"]
