@@ -15,5 +15,4 @@ su -c "/opt/zimbra/bin/zmcontrol status" zimbra
 bash
 else
 /install.sh
-bash
 fi
