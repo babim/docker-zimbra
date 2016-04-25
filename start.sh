@@ -1,4 +1,6 @@
 #!/bin/bash
+chown root:root /var/run/sshd
+service ssh restart
 if [ -f "/opt/zimbra/bin/zmcontrol" ]; then
 rm -f /opt/zimbra/zmstat/pid/zmstat-*.pid
 su -c "/opt/zimbra/bin/zmloggerctl restart" zimbra
