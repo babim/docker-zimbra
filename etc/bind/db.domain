@@ -1,0 +1,18 @@
+$TTL  604800
+@      IN      SOA    ns1.$DOMAIN. root.localhost. (
+                              2        ; Serial
+                        604800        ; Refresh
+                          86400        ; Retry
+                        2419200        ; Expire
+                        604800 )      ; Negative Cache TTL
+;
+@     IN      NS      ns1.$DOMAIN.
+@     IN      A      $CONTAINERIP
+@     IN      MX     10     $HOSTNAME.$DOMAIN.
+$HOSTNAME     IN      A      $CONTAINERIP
+ns1      IN      A      $CONTAINERIP
+mail     IN      A      $CONTAINERIP
+pop3     IN      A      $CONTAINERIP
+imap     IN      A      $CONTAINERIP
+imap4    IN      A      $CONTAINERIP
+smtp IN A $CONTAINERIP
