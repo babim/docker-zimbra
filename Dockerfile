@@ -1,8 +1,8 @@
-FROM babim/ubuntubaseinit
+FROM babim/ubuntubaseinit:14.04
 
 ## Install wget ##
 RUN apt-get update && apt-get install -y wget bind9 bind9utils bind9-doc dnsutils \
-	netcat-openbsd sudo libidn11 libpcre3 libgmp10 libexpat1 libstdc++6 libperl5.22 libaio1 resolvconf unzip pax sysstat sqlite3
+	netcat-openbsd sudo libidn11 libpcre3 libgmp10 libexpat1 libstdc++6 libperl5.18 libaio1 resolvconf unzip pax sysstat sqlite3
 
 RUN apt-get clean && \
     apt-get autoclean && \
