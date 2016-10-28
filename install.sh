@@ -188,7 +188,7 @@ EOF
 echo "Downloading Zimbra Collaboration 8.6"
 cd /tmp/zcs 
 ##download from web
-if [ -f "/install/zcs-8.6.0_GA_1153.UBUNTU14_64.20141215151116.tgz" ]; then
+if [ -f "/install/zcs-8.7.1_GA_1670.UBUNTU16_64.20161025045114.tgz" ]; then
 ##install from /install
 cp /install/zcs*.tgz /tmp/zcs
 tar xzvf zcs-*.tgz
@@ -198,7 +198,7 @@ cd /tmp/zcs/zcs-* && ./install.sh -s < /tmp/zcs/installZimbra-keystrokes
 echo "Installing Zimbra Collaboration injecting the configuration"
 /opt/zimbra/libexec/zmsetup.pl -c /tmp/zcs/installZimbraScript
 else
-wget https://files.zimbra.com/downloads/8.6.0_GA/zcs-8.6.0_GA_1153.UBUNTU14_64.20141215151116.tgz
+wget https://files.zimbra.com/downloads/8.7.1_GA/zcs-8.7.1_GA_1670.UBUNTU16_64.20161025045114.tgz
 ##install from /install
 cp /install/zcs*.tgz /tmp/zcs
 tar xzvf zcs-*.tgz
