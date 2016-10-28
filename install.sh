@@ -185,7 +185,7 @@ INSTALL_PACKAGES="zimbra-core zimbra-ldap zimbra-logger zimbra-mta zimbra-snmp z
 EOF
 
 ##Install the Zimbra Collaboration ##
-echo "Downloading Zimbra Collaboration 8.6"
+echo "Downloading Zimbra Collaboration 8.7"
 cd /tmp/zcs 
 ##download from web
 if [ -f "/install/zcs-8.7.1_GA_1670.UBUNTU16_64.20161025045114.tgz" ]; then
