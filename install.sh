@@ -1,12 +1,19 @@
 #!/bin/sh
 ## Preparing all the variables like IP, Hostname, etc, all of them from the container
 sleep 5
-HOSTNAME=$(hostname -a)
+HOSTNAME=$(hostname -s)
 DOMAIN=$(hostname -d)
 CONTAINERIP=$(ip addr | grep 'state UP' -A2 | tail -n1 | awk '{print $2}' | cut -f1  -d'/')
 RANDOMHAM=$(date +%s|sha256sum|base64|head -c 10)
 RANDOMSPAM=$(date +%s|sha256sum|base64|head -c 10)
 RANDOMVIRUS=$(date +%s|sha256sum|base64|head -c 10)
+
+#change zimbra default value
+MailSSLPort1=${MailSSLPort:-443}
+AdminPort1=${AdminPort:-7071}
+AdminURL1=${AdminURL:-/zimbraAdmin}
+PASSWORD1=${PASSWORD:-123456}
+
 service ssh start
 ## Installing the DNS Server ##
 echo "Installing DNS Server"
@@ -84,7 +91,7 @@ cat <<EOF >/tmp/zcs/installZimbraScript
 AVDOMAIN="$DOMAIN"
 AVUSER="admin@$DOMAIN"
 CREATEADMIN="admin@$DOMAIN"
-CREATEADMINPASS="$PASSWORD"
+CREATEADMINPASS="$PASSWORD1"
 CREATEDOMAIN="$DOMAIN"
 DOCREATEADMIN="yes"
 DOCREATEDOMAIN="yes"
@@ -102,11 +109,11 @@ IMAPSSLPORT="7993"
 IMAPSSLPROXYPORT="993"
 INSTALL_WEBAPPS="service zimlet zimbra zimbraAdmin"
 JAVAHOME="/opt/zimbra/java"
-LDAPAMAVISPASS="$PASSWORD"
-LDAPPOSTPASS="$PASSWORD"
-LDAPROOTPASS="$PASSWORD"
-LDAPADMINPASS="$PASSWORD"
-LDAPREPPASS="$PASSWORD"
+LDAPAMAVISPASS="$PASSWORD1"
+LDAPPOSTPASS="$PASSWORD1"
+LDAPROOTPASS="$PASSWORD1"
+LDAPADMINPASS="$PASSWORD1"
+LDAPREPPASS="$PASSWORD1"
 LDAPBESSEARCHSET="set"
 LDAPHOST="$HOSTNAME.$DOMAIN"
 LDAPPORT="389"
@@ -146,12 +153,12 @@ USESPELL="yes"
 VERSIONUPDATECHECKS="TRUE"
 VIRUSQUARANTINE="virus-quarantine.$RANDOMVIRUS@$DOMAIN"
 ZIMBRA_REQ_SECURITY="yes"
-ldap_bes_searcher_password="$PASSWORD"
+ldap_bes_searcher_password="$PASSWORD1"
 ldap_dit_base_dn_config="cn=zimbra"
-ldap_nginx_password="$PASSWORD"
+ldap_nginx_password="$PASSWORD1"
 mailboxd_directory="/opt/zimbra/mailboxd"
 mailboxd_keystore="/opt/zimbra/mailboxd/etc/keystore"
-mailboxd_keystore_password="$PASSWORD"
+mailboxd_keystore_password="$PASSWORD1"
 mailboxd_server="jetty"
 mailboxd_truststore="/opt/zimbra/java/jre/lib/security/cacerts"
 mailboxd_truststore_password="changeit"
@@ -171,22 +178,36 @@ zimbraVersionCheckSendNotifications="TRUE"
 zimbraWebProxy="FALSE"
 zimbra_ldap_userdn="uid=zimbra,cn=admins,cn=zimbra"
 zimbra_require_interprocess_security="1"
+zimbraMailSSLPort="$MailSSLPort1"
+zimbraAdminPort="$AdminPort1"
+zimbraAdminURL="$AdminURL1"
 INSTALL_PACKAGES="zimbra-core zimbra-ldap zimbra-logger zimbra-mta zimbra-snmp zimbra-store zimbra-apache zimbra-spell zimbra-memcached zimbra-proxy"
 EOF
 
 ##Install the Zimbra Collaboration ##
-echo "Downloading Zimbra Collaboration 8.6"
+echo "Downloading Zimbra Collaboration 8.7"
 cd /tmp/zcs 
 ##download from web
-#wget https://files.zimbra.com/downloads/8.6.0_GA/zcs-8.6.0_GA_1153.UBUNTU14_64.20141215151116.tgz
+if [ -f "/install/zcs-8.7.1_GA_1670.UBUNTU16_64.20161025045114.tgz" ]; then
 ##install from /install
 cp /install/zcs*.tgz /tmp/zcs
-tar xzvf zcs-*
+tar xzvf zcs-*.tgz
 rm -f zcs*.tgz
 echo "Installing Zimbra Collaboration just the Software"
 cd /tmp/zcs/zcs-* && ./install.sh -s < /tmp/zcs/installZimbra-keystrokes
 echo "Installing Zimbra Collaboration injecting the configuration"
 /opt/zimbra/libexec/zmsetup.pl -c /tmp/zcs/installZimbraScript
+else
+wget https://files.zimbra.com/downloads/8.7.1_GA/zcs-8.7.1_GA_1670.UBUNTU16_64.20161025045114.tgz
+##install from /install
+cp /install/zcs*.tgz /tmp/zcs
+tar xzvf zcs-*.tgz
+rm -f zcs*.tgz
+echo "Installing Zimbra Collaboration just the Software"
+cd /tmp/zcs/zcs-* && ./install.sh -s < /tmp/zcs/installZimbra-keystrokes
+echo "Installing Zimbra Collaboration injecting the configuration"
+/opt/zimbra/libexec/zmsetup.pl -c /tmp/zcs/installZimbraScript
+fi
 
 if [[ $1 == "-d" ]]; then
   while true; do sleep 1000; done
