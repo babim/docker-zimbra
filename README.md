@@ -1,5 +1,6 @@
 # docker-zimbra
-      mount volume to /install if you want install from /install. SSH and run /install.sh or edit /install.sh to wget option
+Run good in coreos without Server service monitor
+mount volume to /install if you want install from /install. SSH and run /install.sh or edit /install.sh to wget option
 
 # Zimbra 8.6 for docker
 
