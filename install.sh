@@ -82,6 +82,7 @@ if [ -f "/install/zcs-8.7.1_GA_1670.UBUNTU14_64.20161025045105.tgz" ]; then
 cp /install/zcs*.tgz /tmp/zcs
 tar xzvf zcs-*.tgz
 rm -f zcs*.tgz
+fi
 
 if [[ $1 == "-bash" ]]; then
   /bin/bash
