@@ -1,6 +1,4 @@
 # docker-zimbra
-edit: use baseimage with fix init pid 1.
-      image not include zimbra. Install from /install.sh. with 2 option: wget and install from /install (default install from /install)
       mount volume to /install if you want install from /install. SSH and run /install.sh or edit /install.sh to wget option
 
 # Zimbra 8.6 for docker
