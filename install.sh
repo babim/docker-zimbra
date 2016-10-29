@@ -64,6 +64,10 @@ smtp     IN      A      $CONTAINERIP
 EOF
 sudo service bind9 restart 
 
+# Set DNS Server to localhost
+echo "nameserver 127.0.0.1" > /etc/resolv.conf
+echo "nameserver 8.8.8.8" >> /etc/resolv.conf
+
 ##Install the Zimbra Collaboration OS dependencies and Zimbra package ##
 #apt-get update
 echo "Download and install Zimbra Collaboration dependencies"
