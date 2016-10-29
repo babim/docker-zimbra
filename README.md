@@ -1,13 +1,13 @@
 # docker-zimbra
-Run good in coreos without Server service monitor
-mount volume to /install if you want install from /install. SSH and run /install.sh or edit /install.sh to wget option
+•   Run good in coreos without Server service monitor
+•   mount volume to /install if you want install from /install. SSH and run /install.sh or edit /install.sh to wget option
 
 # Zimbra 8.7.1 for docker
 
-docker run -p PORTS -h HOSTNAME.DOMAIN --dns DNSSERVER -i -t -e PASSWORD=YOURPASSWORD NAMEOFDOCKERIMAGE
+``docker run -p PORTS -h HOSTNAME.DOMAIN --dns DNSSERVER -i -t -e PASSWORD=YOURPASSWORD NAMEOFDOCKERIMAGE``
 
 Example:
-docker run -p 25:25 -p 80:80 -p 456:456 -p 587:587 -p 110:110 -p 143:143 -p 993:993 -p 995:995 -p 443:443 -p 8080:8080 -p 8443:8443 -p 7071:7071 -p 9071:9071 -h zimbra86-docker.zimbra.io --dns 127.0.0.1 --dns 8.8.8.8 -i -t -e PASSWORD=Zimbra2015 zimbra_docker
+``docker run -p 25:25 -p 80:80 -p 456:456 -p 587:587 -p 110:110 -p 143:143 -p 993:993 -p 995:995 -p 443:443 -p 8080:8080 -p 8443:8443 -p 7071:7071 -p 9071:9071 -h zimbra86-docker.zimbra.io --dns 127.0.0.1 --dns 8.8.8.8 -i -t -e PASSWORD=Zimbra2015 zimbra_docker``
 
 This will create the container in few seconds, and run automatically the start.sh:
 
