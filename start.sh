@@ -2,6 +2,10 @@
 chown root:root /var/run/sshd
 service ssh restart
 if [ -f "/opt/zimbra/bin/zmcontrol" ]; then
+# Set DNS Server to localhost
+echo "nameserver 127.0.0.1" > /etc/resolv.conf
+echo "nameserver 8.8.8.8" >> /etc/resolv.conf
+# Restart zimbra
 rm -f /opt/zimbra/zmstat/pid/zmstat-*.pid
 su -c "/opt/zimbra/bin/zmloggerctl restart" zimbra
 /opt/zimbra/libexec/zmsyslogsetup
