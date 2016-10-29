@@ -1,12 +1,13 @@
 Just test. this zimbra docker not stable.
 defunct java process.
+Run good in coreos without Server service monitor
 
 # docker-zimbra
 edit: use baseimage with fix init pid 1.
       image not include zimbra. Install from /install.sh. with 2 option: wget and install from /install (default install from /install)
       mount volume to /install if you want install from /install. SSH and run /install.sh or edit /install.sh to wget option
 
-# Zimbra 8.6 for docker
+# Zimbra 8.7.1 for docker
 
 docker run -p PORTS -h HOSTNAME.DOMAIN --dns DNSSERVER -i -t -e PASSWORD=YOURPASSWORD NAMEOFDOCKERIMAGE
 
@@ -27,7 +28,7 @@ This will create the container in few seconds, and run automatically the start.s
 
 •     Install a DNS Server based in bind9 and the dnsutils package
 •     Configure all the DNS Server to resolve automatically internal the MX and the hostname that we define while launch the container.
-•     Install the OS dependencies for Zimbra Collaboration 8.6
+•     Install the OS dependencies for Zimbra Collaboration 8.7.1
 •     Create 2 files to automate the Zimbra Collaboration installation, the keystrokes and the config.defaults.
 •     Launch the installation of Zimbra based only in the .install.sh -s
 •     Inject the config.defaults file with all the parameters that is autoconfigured with the Hostname, domain, IP, and password that you define before.
