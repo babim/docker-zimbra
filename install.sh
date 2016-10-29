@@ -35,7 +35,7 @@ auth-nxdomain no; # conform to RFC1035
 #listen-on-v6 { any; };
 };
 EOF
-cat <<EOF >>/etc/bind/named.conf.local
+cat <<EOF >/etc/bind/named.conf.local
 zone "$DOMAIN" {
         type master;
         file "/etc/bind/db.$DOMAIN";
