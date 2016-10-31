@@ -1,5 +1,6 @@
 #!/bin/bash
 
+if [ -f "/opt/zimbra/bin/zmcontrol" ]; then
 HOSTNAME=$(hostname -s)
 DOMAIN=$(hostname -d)
 CONTAINERIP=$(ip addr | grep 'state UP' -A2 | tail -n1 | awk '{print $2}' | cut -f1  -d'/')
@@ -53,7 +54,6 @@ smtp     IN      A      $CONTAINERIP
 EOF
 sudo service bind9 restart 
 
-if [ -f "/opt/zimbra/bin/zmcontrol" ]; then
 # Restart zimbra
 rm -f /opt/zimbra/zmstat/pid/zmstat-*.pid
 su -c "/opt/zimbra/bin/zmloggerctl restart" zimbra
