@@ -211,6 +211,8 @@ echo "Installing Zimbra Collaboration just the Software"
 cd /tmp/zcs/zcs-* && ./install.sh -s < /tmp/zcs/installZimbra-keystrokes
 echo "Installing Zimbra Collaboration injecting the configuration"
 /opt/zimbra/libexec/zmsetup.pl -c /tmp/zcs/installZimbraScript
+# remove install temp
+rm -rf /tmp/zcs
 fi
 
 if [[ $1 == "-d" ]]; then
