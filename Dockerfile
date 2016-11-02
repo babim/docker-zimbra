@@ -1,4 +1,4 @@
-FROM babim/ubuntubaseinit:14.04
+FROM babim/ubuntubase:14.04
 
 ## Install wget ##
 RUN apt-get update && apt-get install -y wget bind9 bind9utils bind9-doc dnsutils \
@@ -19,7 +19,10 @@ EXPOSE 25 456 587 110 143 993 995 80 443 8080 8443 7071
 COPY etc /etc/
 
 RUN mkdir /tmp/zcs
-ADD start.sh /etc/my_init.d/startup.sh
-RUN chmod +x /etc/my_init.d/startup.sh
+ADD start.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+
+ENTRYPOINT ["/entrypoint.sh"]
+
 ADD install.sh /install.sh
 RUN chmod +x /install.sh
