@@ -62,7 +62,7 @@ imap     IN      A      $CONTAINERIP
 imap4     IN      A      $CONTAINERIP
 smtp     IN      A      $CONTAINERIP
 EOF
-sudo service bind9 restart
+sudo service bind9 start
 
 # Set DNS Server to localhost
 echo "nameserver 127.0.0.1" > /etc/resolv.conf
