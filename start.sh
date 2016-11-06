@@ -1,5 +1,8 @@
 #!/bin/bash
 chown root:root /var/run/sshd
+# set password root is root
+SSHPASS1=${SSHPASS:-root}
+echo "root:$SSHPASS1" | chpasswd
 service ssh start
 
 if [ -f "/opt/zimbra/bin/zmcontrol" ]; then
