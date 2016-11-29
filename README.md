@@ -1,3 +1,8 @@
+[![](https://images.microbadger.com/badges/image/babim/zimbra.svg)](https://microbadger.com/images/babim/zimbra "Get your own image badge on microbadger.com")[![](https://images.microbadger.com/badges/version/babim/zimbra.svg)](https://microbadger.com/images/babim/zimbra "Get your own version badge on microbadger.com")
+[![](https://images.microbadger.com/badges/image/babim/zimbra:ssh.svg)](https://microbadger.com/images/babim/zimbra:ssh "Get your own image badge on microbadger.com")[![](https://images.microbadger.com/badges/version/babim/zimbra:ssh.svg)](https://microbadger.com/images/babim/zimbra:ssh "Get your own version badge on microbadger.com")
+
+[![](https://images.microbadger.com/badges/image/babim/zimbra:manual.svg)](https://microbadger.com/images/babim/zimbra:manual "Get your own image badge on microbadger.com")[![](https://images.microbadger.com/badges/version/babim/zimbra:manual.svg)](https://microbadger.com/images/babim/zimbra:manual "Get your own version badge on microbadger.com")
+
 Just test. this zimbra docker not stable.
 defunct java process.
 Run good in coreos without Server service monitor
