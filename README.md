@@ -32,10 +32,15 @@ AdminURL=/zimbraAdmin
 This will create the container in few seconds, and run automatically the start.sh:
 
 •     Install a DNS Server based in bind9 and the dnsutils package
+
 •     Configure all the DNS Server to resolve automatically internal the MX and the hostname that we define while launch the container.
+
 •     Install the OS dependencies for Zimbra Collaboration 8.7.1
+
 •     Create 2 files to automate the Zimbra Collaboration installation, the keystrokes and the config.defaults.
+
 •     Launch the installation of Zimbra based only in the .install.sh -s
+
 •     Inject the config.defaults file with all the parameters that is autoconfigured with the Hostname, domain, IP, and password that you define before.
 
 # Access to the Web Client and Admin Console
